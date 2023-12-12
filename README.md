@@ -1,21 +1,22 @@
+# Webcam and Tello Drone Video Recorder Modules
 
-Certainly! Here's the entire content in one markdown box:
+## Description
 
-markdown
-Copy code
-# Webcam Video Recorder Module
+This repository contains two Python modules that facilitate video recording from different sources: internal/external webcams and Tello drones.
+
+### Webcam Video Recorder Module
 
 This module provides a convenient way to record video from an internal or external webcam using OpenCV in Python.
 
-## Prerequisites
+#### Prerequisites
 - Python
 - OpenCV (cv2)
 - datetime
 - os
 
-## Usage
+#### Usage
 
-### Recording Video
+####  Recording Video
 ```python
 from video_recorder import record_over_webcam
 
@@ -26,7 +27,7 @@ record_over_webcam(0)
 #### Function Parameters
 channel (int): The channel number of the camera to record from.
 
-## How it Works
+#### How it Works
 
 1. The module uses OpenCV for video processing, datetime for timestamping, and os for file operations.
 
@@ -40,11 +41,52 @@ channel (int): The channel number of the camera to record from.
 
 6. After recording is complete, it releases the video capture, writer, and destroys the display window.
 
-## Running the Example
+#### Running the Example
 To run the example, simply call the `record_over_webcam` function with the desired camera channel as an argument.
 
 ```python
 record_over_webcam(0)
+```
+
+### Tello Drone Video Recorder Module
+This module allows you to record video from a Tello drone using the DJITelloPy library and OpenCV in Python.
+
+#### Prerequisites
+- Python
+- OpenCV (cv2)
+- djitellopy
+- datetime
+
+#### Usage
+
+#### Recording Video
+
+```python
+from record_tello import record_tello_video
+
+# Connect to Tello drone, record video, and reboot
+record_tello_video()
+```
+
+#### Function Parameters
+No parameters are required.
+
+#### How it Works
+1. The module uses OpenCV for video processing, datetime for timestamping, and djitellopy for Tello drone communication.
+
+2. The record_tello_video function connects to a Tello drone, starts video streaming, and records the video to a file.
+
+3. The recorded video is saved with a unique timestamped filename.
+
+4. The recording continues until the 'q' key is pressed.
+
+5. After recording is complete, it closes the video window, releases resources, and reboots the Tello drone.
+
+#### Running the Example
+To run the example, simply call the record_tello_video function.
+
+```python
+record_tello_video()
 ```
 
 ## License
